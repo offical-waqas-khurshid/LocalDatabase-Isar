@@ -14,6 +14,12 @@ class IsarService {
     final isar = await db;
     isar.writeTxn(() => isar.students.put(newStudent));
   }
+
+  /// Todo: Get Student method
+  Future<List<Students>> getStudents(Students newStudent) async {
+    final isar = await db;
+    return  await isar.students.where().findAll();
+  }
   
   // Future<void> saveStudent(Students newStudent) async {
   //   final isar = await db;

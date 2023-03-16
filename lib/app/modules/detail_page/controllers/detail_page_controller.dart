@@ -1,23 +1,16 @@
 import 'package:get/get.dart';
+import 'package:local_database_isar/app/core/entitites/students.dart';
 
 class DetailPageController extends GetxController {
-  //TODO: Implement DetailPageController
+  Students students = Students();
 
-  final count = 0.obs;
+  List<String> studentsList = [];
+
+
   @override
-  void onInit() {
+  void onInit()  async {
     super.onInit();
+    studentsList = (students.name) as List<String>;
+    print("========================= $studentsList");
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:local_database_isar/app/core/entitites/students.dart';
 import 'package:local_database_isar/app/core/network/local_database_provider.dart';
+import 'package:local_database_isar/app/routes/app_pages.dart';
 
 import '../controllers/home_page_controller.dart';
 
@@ -64,6 +65,7 @@ class HomePageView extends GetView<HomePageController> {
             service.insertStudent(students..semester = controller.semesterController.text);
             Get.snackbar("Alert!", "Data inserted Sucessfully");
             controller.clearControllers();
+            Get.offAndToNamed(Routes.DETAIL_PAGE);
             }, child: const Text("Done"))
           ],
         ),
