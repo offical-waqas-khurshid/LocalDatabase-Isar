@@ -1,7 +1,9 @@
 import 'package:isar/isar.dart';
-class IsarService{
+
+class IsarService {
   late Future<Isar> db;
-  IsarService(){
+
+  IsarService() {
     db = OpenDB();
   }
 }
