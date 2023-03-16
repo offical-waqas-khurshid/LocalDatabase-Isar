@@ -4,8 +4,7 @@ import 'package:isar/isar.dart';
 @collection
 class Students {
   Id? isarAutoIncrement;
-  late String name;
-  late String department;
-  late String semester;
-  late int phoneNumber;
+   String? name;
+   String? department;
+   String? semester;
 }

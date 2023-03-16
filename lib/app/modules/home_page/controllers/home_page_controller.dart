@@ -1,23 +1,21 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class HomePageController extends GetxController {
-  //TODO: Implement HomePageController
 
-  final count = 0.obs;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController deptController = TextEditingController();
+  TextEditingController semesterController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
+  void clearControllers(){
+    nameController.clear();
+    deptController.clear();
+    semesterController.clear();
+    phoneController.clear();
+  }
   @override
   void onInit() {
     super.onInit();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
