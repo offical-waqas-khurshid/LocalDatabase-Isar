@@ -8,8 +8,9 @@ import 'package:local_database_isar/app/routes/app_pages.dart';
 import '../controllers/home_page_controller.dart';
 
 class HomePageView extends GetView<HomePageController> {
-   HomePageView({Key? key}) : super(key: key);
+  HomePageView({Key? key}) : super(key: key);
   IsarService service = IsarService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,7 @@ class HomePageView extends GetView<HomePageController> {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            TextField(
+            TextFormField(
               controller: controller.nameController,
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
@@ -34,7 +35,7 @@ class HomePageView extends GetView<HomePageController> {
             const SizedBox(
               height: 20,
             ),
-            TextField(
+            TextFormField(
               controller: controller.deptController,
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
@@ -46,7 +47,7 @@ class HomePageView extends GetView<HomePageController> {
             const SizedBox(
               height: 20,
             ),
-            TextField(
+            TextFormField(
               controller: controller.semesterController,
               keyboardType: TextInputType.text,
               decoration: const InputDecoration(
@@ -58,15 +59,20 @@ class HomePageView extends GetView<HomePageController> {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(onPressed: () async {
-              Students students = Students();
-              service.insertStudent(students..name = controller.nameController.text);
-            service.insertStudent(students..department = controller.deptController.text);
-            service.insertStudent(students..semester = controller.semesterController.text);
-            Get.snackbar("Alert!", "Data inserted Sucessfully");
-            controller.clearControllers();
-            Get.toNamed(Routes.DETAIL_PAGE);
-            }, child: const Text("Done"))
+            ElevatedButton(
+                onPressed: () async {
+                  Students students = Students();
+                  service.insertStudent(
+                      students..name = controller.nameController.text);
+                  service.insertStudent(
+                      students..department = controller.deptController.text);
+                  service.insertStudent(
+                      students..semester = controller.semesterController.text);
+                  Get.snackbar("Alert!", "Data inserted Sucessfully");
+                  Get.toNamed(Routes.DETAIL_PAGE);
+                  controller.clearControllers();
+                },
+                child: const Text("Done"))
           ],
         ),
       )),

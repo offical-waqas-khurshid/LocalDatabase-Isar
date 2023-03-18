@@ -10,15 +10,27 @@ class IsarService {
   }
 
   ///TODO: Insert student method
-  Future<void> insertStudent(Students newStudent) async {
+  Future<void> insertStudent(Students student) async {
     final isar = await db;
-    isar.writeTxn(() => isar.students.put(newStudent));
+    isar.writeTxn(() => isar.students.put(student));
   }
 
   /// Todo: Get Student method
   Future<List<Students>> getStudents() async {
     final isar = await db;
     return await isar.students.where().findAll();
+  }
+
+  /// Todo: update Student data method
+  Future<void> updateStudent(Students students) async {
+    final isar = await db;
+    await isar.writeTxn(() => isar.students.put(students));
+  }
+
+  /// Todo: Delete Student data method
+  Future<void> deleteStudent(Id id) async {
+    final isar = await db;
+    await isar.writeTxn(() => isar.students.delete(id));
   }
 
   Future<Isar> openDB() async {
