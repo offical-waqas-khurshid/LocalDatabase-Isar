@@ -4,16 +4,13 @@ import 'package:local_database_isar/app/core/entitites/students.dart';
 import '../../../core/network/local_database_provider.dart';
 
 class DetailPageController extends GetxController {
-  Students students = Students();
-
- List<Students> studentsList = [];
-
   IsarService service = IsarService();
+ List<Students> studentsList = [];
   @override
   void onInit()  async{
     super.onInit();
-    //studentsList = (students.name) as List<String>;
-   // print("""""""""""""""""object""""""""""""""""");
     studentsList = await service.getStudents();
+    print(studentsList);
+    print(studentsList.length);
   }
 }

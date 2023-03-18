@@ -11,29 +11,36 @@ import '../controllers/detail_page_controller.dart';
 
 class DetailPageView extends GetView<DetailPageController> {
   DetailPageView({Key? key}) : super(key: key);
-  IsarService service = IsarService();
-  Students students = Students();
-
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Student Detail'),
         centerTitle: true,
       ),
       body: Center(
-        child: FutureBuilder(future: service.getStudents(),builder: (context,snap){
-          if(snap.hasData){
-            return ListView.builder(itemCount:snap.data?.length??0,itemBuilder: (context,index){
-              return ListTile(title: Text("${snap.data?[index]?.name??""}"),);
-            });
-          }else if(snap.hasError){
-            return Text("${snap.error}");
-          }else{
-            return CircularProgressIndicator();
-          }
-        },),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 700,
+              child: ListView.builder(
+                itemCount: controller.studentsList.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text("${controller.studentsList[index].name}"),
+                    leading: CircleAvatar(
+                        backgroundColor: Colors.grey,
+                        child: Text(
+                            "${controller.studentsList[index].isarAutoIncrement}")),
+                    subtitle:
+                        Text("${controller.studentsList[index].department}"),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

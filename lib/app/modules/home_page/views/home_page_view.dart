@@ -65,7 +65,7 @@ class HomePageView extends GetView<HomePageController> {
             service.insertStudent(students..semester = controller.semesterController.text);
             Get.snackbar("Alert!", "Data inserted Sucessfully");
             controller.clearControllers();
-            Get.offAndToNamed(Routes.DETAIL_PAGE);
+            Get.toNamed(Routes.DETAIL_PAGE);
             }, child: const Text("Done"))
           ],
         ),
