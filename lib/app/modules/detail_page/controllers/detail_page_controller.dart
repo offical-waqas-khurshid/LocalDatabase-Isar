@@ -14,8 +14,10 @@ class DetailPageController extends GetxController {
   void onInit()  async{
     super.onInit();
     studentsList = await service.getStudents();
-    studentsList = await service.deleteStudent();
-    
   }
+
+  // deleteStudent() async {
+  //  await service.deleteStudent(Students()..isarAutoIncrement);
+  // }
 
 }

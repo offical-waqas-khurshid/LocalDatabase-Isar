@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,7 +13,7 @@ import '../../../core/network/local_database_provider.dart';
 import '../controllers/detail_page_controller.dart';
 
 class DetailPageView extends GetView<DetailPageController> {
-   DetailPageView({Key? key}) : super(key: key);
+  DetailPageView({Key? key}) : super(key: key);
   Students students = Students();
 
   @override
@@ -33,12 +35,13 @@ class DetailPageView extends GetView<DetailPageController> {
                     title: Text("${controller.studentsList[index].name}"),
                     leading: CircleAvatar(
                         backgroundColor: Colors.grey,
-                        child:
-                            InkWell(onTap: ()  {
-                              IsarService service = IsarService();
-                              service.deleteStudent(1);
-                              Get.snackbar("Delete", "Student Delete Successfully");
-                            }, child: const Icon(Icons.delete))),
+                        child: InkWell(
+                            onTap: () {
+                              //controller.deleteStudent();
+                              Get.snackbar(
+                                  "Delete", "Student Delete Successfully");
+                            },
+                            child: const Icon(Icons.delete))),
                     subtitle:
                         Text("${controller.studentsList[index].department}"),
                     trailing: InkWell(

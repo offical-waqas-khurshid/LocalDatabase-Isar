@@ -28,9 +28,10 @@ class IsarService {
   }
 
   /// Todo: Delete Student data method
-  Future<void> deleteStudent(Id id) async {
+  deleteStudent(Students students) async {
     final isar = await db;
-    await isar.writeTxn(() => isar.students.delete(id));
+    await isar
+        .writeTxn(() => isar.students.delete(students.isarAutoIncrement!));
   }
 
   Future<Isar> openDB() async {
